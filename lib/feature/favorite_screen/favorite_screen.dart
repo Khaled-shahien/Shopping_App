@@ -40,19 +40,33 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     user = UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
     List<String> favIds = List<String>.from(user!.favList);
 
-    QuerySnapshot productsSnapshot = await _firestore
-        .collection('products')
-        .get();
-    List<ProductModel> allProducts = productsSnapshot.docs
-        .map((doc) => ProductModel.fromJson(doc.data() as Map<String, dynamic>))
-        .toList();
+    if (favIds.isEmpty) {
+      setState(() {
+        favProducts = [];
+      });
+      return;
+    }
+
+    // Bolt ⚡: Optimized data fetching by querying only the favorite products instead of the entire collection.
+    // Batching for whereIn limit (max 30 elements per query)
+    List<ProductModel> allProducts = [];
+    for (int i = 0; i < favIds.length; i += 30) {
+      final batch = favIds.skip(i).take(30).toList();
+      QuerySnapshot productsSnapshot = await _firestore
+          .collection('products')
+          .where('id', whereIn: batch)
+          .get();
+
+      allProducts.addAll(productsSnapshot.docs
+          .map((doc) => ProductModel.fromJson(doc.data() as Map<String, dynamic>))
+          .toList());
+    }
 
     final seenIds = <String>{};
     setState(() {
       favProducts = allProducts
           .where(
             (product) =>
-                favIds.contains(product.id ?? '') &&
                 (selectedCategory == "All" ||
                     product.category == selectedCategory),
           )
