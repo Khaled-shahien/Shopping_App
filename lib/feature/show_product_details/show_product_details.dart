@@ -7,7 +7,7 @@ class ShowDetailsScreen extends StatefulWidget {
   const ShowDetailsScreen({super.key, required this.product});
 
   @override
-  _ShowDetailsScreenState createState() => _ShowDetailsScreenState();
+  State<ShowDetailsScreen> createState() => _ShowDetailsScreenState();
 }
 
 class _ShowDetailsScreenState extends State<ShowDetailsScreen> {
