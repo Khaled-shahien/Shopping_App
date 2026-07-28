@@ -9,9 +9,6 @@ class ColorManager {
   static const LinearGradient primaryColorGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [
-      lightGray,
-      darkGray
-    ],
+    colors: [lightGray, darkGray],
   );
 }

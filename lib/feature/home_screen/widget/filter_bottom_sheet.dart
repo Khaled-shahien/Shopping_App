@@ -96,8 +96,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   ),
                 ),
             ],
-          )
-          ,
+          ),
 
           SizedBox(height: SizeConfig.h(20)),
 

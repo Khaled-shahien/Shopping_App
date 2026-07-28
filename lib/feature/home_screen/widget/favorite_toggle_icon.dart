@@ -73,10 +73,9 @@ class _FavoriteToggleIconState extends State<FavoriteToggleIcon> {
         onPressed: _toggleFavorite,
         icon: isFavorite
             ? ShaderMask(
-            shaderCallback: (Rect bounds) {
-              return ColorManager.primaryColorGradient
-                  .createShader(bounds);
-            },
+                shaderCallback: (Rect bounds) {
+                  return ColorManager.primaryColorGradient.createShader(bounds);
+                },
                 child: const Icon(
                   Icons.favorite,
                   size: 28,

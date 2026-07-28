@@ -57,9 +57,14 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           .where('id', whereIn: batch)
           .get();
 
-      allProducts.addAll(productsSnapshot.docs
-          .map((doc) => ProductModel.fromJson(doc.data() as Map<String, dynamic>))
-          .toList());
+      allProducts.addAll(
+        productsSnapshot.docs
+            .map(
+              (doc) =>
+                  ProductModel.fromJson(doc.data() as Map<String, dynamic>),
+            )
+            .toList(),
+      );
     }
 
     final seenIds = <String>{};
@@ -68,7 +73,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           .where(
             (product) =>
                 (selectedCategory == "All" ||
-                    product.category == selectedCategory),
+                product.category == selectedCategory),
           )
           .where((p) => p.id != null && seenIds.add(p.id!))
           .toList();

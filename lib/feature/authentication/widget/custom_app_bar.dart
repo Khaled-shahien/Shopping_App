@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 class CustomAppBar extends StatelessWidget {
   final String image;
   final double heightValue;
-  const CustomAppBar({super.key, required this.image,required this.heightValue});
+  const CustomAppBar({
+    super.key,
+    required this.image,
+    required this.heightValue,
+  });
 
   @override
   Widget build(BuildContext context) {

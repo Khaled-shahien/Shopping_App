@@ -71,7 +71,7 @@ class _CustomSliderImageState extends State<CustomSliderImage> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    final sliderWidth = screenWidth ;
+    final sliderWidth = screenWidth;
     final sliderHeight = screenHeight * 0.6;
 
     return SizedBox(

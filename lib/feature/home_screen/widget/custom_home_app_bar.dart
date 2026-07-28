@@ -4,7 +4,7 @@ import '../../../core/utils/size_config.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   final String name;
-  const CustomHomeAppBar({super.key,required this.name});
+  const CustomHomeAppBar({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,7 @@ class CustomHomeAppBar extends StatelessWidget {
           children: [
             Text(
               name,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: SizeConfig.w(18),
-              ),
+              style: TextStyle(color: Colors.black, fontSize: SizeConfig.w(18)),
             ),
             Text(
               'Welcome Back',
